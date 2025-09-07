@@ -43,11 +43,52 @@ EMAIL_USER=your_mailtrap_user
 EMAIL_PASS=your_mailtrap_pass
 ```
 
+
 ## API Endpoints
+
+### Auth
 - `POST /api/auth/signup` — Register user (name, email, phone, password)
 - `POST /api/auth/verify-otp` — Verify OTP sent to email
-- `POST /api/auth/login` — Login (returns JWT)
-- All `/api/notes/*` routes require JWT in `Authorization: Bearer <token>`
+- `POST /api/auth/login` — Login (returns JWT, rate limited)
+
+### Notes (JWT required)
+- `POST /api/notes` — Create note (title, content, tags)
+- `GET /api/notes` — Get all notes for logged-in user
+- `GET /api/notes?tag=work` — Get notes with tag "work"
+- `GET /api/notes?tags=work,urgent` — Get notes with multiple tags
+- `GET /api/notes/:id` — Get single note by ID
+- `PUT /api/notes/:id` — Update note (title, content, tags)
+- `DELETE /api/notes/:id` — Delete note by ID
+
+## Validation & Security
+- Input validation for all user and note fields
+- Helmet for secure HTTP headers
+- Rate limiting for login route
+
+## Frontend Usage
+Open `public/index.html` in your browser:
+- Login with your credentials
+- Create notes with title, content, and tags
+- View your notes dynamically
+
+## Example Usage
+### Create Note
+```
+POST /api/notes
+Authorization: Bearer <token>
+{
+	"title": "My First Note",
+	"content": "This is the content.",
+	"tags": ["work", "urgent"]
+}
+```
+
+### Filter Notes by Tag
+```
+GET /api/notes?tag=work
+GET /api/notes?tags=work,urgent
+Authorization: Bearer <token>
+```
 
 ## Technologies
 - Node.js
