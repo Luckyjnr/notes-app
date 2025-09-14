@@ -26,7 +26,10 @@ app.use(cors({
     'http://127.0.0.1:5500',
     'http://localhost:5500',
     'http://127.0.0.1:4000',
-    'http://localhost:4000'
+    'http://localhost:4000',
+    'https://notes-app-frontend.vercel.app',
+    'https://notes-app-frontend-git-main.vercel.app',
+    'https://notes-app-frontend-git-develop.vercel.app'
   ],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],

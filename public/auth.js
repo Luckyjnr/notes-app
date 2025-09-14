@@ -1,7 +1,7 @@
 // Authentication JavaScript for register, login, and OTP verification
 
 // API base URL
-const API_BASE = 'http://localhost:4000/api';
+const API_BASE = 'https://notes-app-9bid.onrender.com/api';
 
 // Utility functions
 function showError(elementId, message) {
