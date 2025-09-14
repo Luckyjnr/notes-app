@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Notes - Notes App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>My Notes</h1>
+      <div class="user-info">
+        <span id="userName">Welcome</span>
+        <button id="logoutBtn" class="logout-btn">Logout</button>
+      </div>
+    </div>
+    
+    <div class="notes-controls">
+      <div class="search-filter">
+        <input type="text" id="searchInput" placeholder="Search notes...">
+        <input type="text" id="tagFilter" placeholder="Filter by tag...">
+        <button id="searchBtn">Search</button>
+        <button id="clearFiltersBtn">Clear</button>
+      </div>
+      <button id="createNoteBtn" class="primary-btn">Create New Note</button>
+    </div>
+    
+    <div id="notesList" class="notes-list">
+      <div class="loading">Loading notes...</div>
+    </div>
+    
+    <div id="pagination" class="pagination"></div>
+  </div>
+  
+  <script src="notes.js"></script>
+</body>
+</html>
+

@@ -8,26 +8,39 @@
 </head>
 <body>
   <div class="container">
-    <h2>Login</h2>
-    <form id="loginForm">
-      <input type="email" id="loginEmail" placeholder="Email" required><br><br>
-      <input type="password" id="loginPassword" placeholder="Password" required><br><br>
-      <button type="submit">Login</button>
-      <div id="loginError" class="error"></div>
-    </form>
-    <hr>
-    <h2>Create Note</h2>
-    <form id="noteForm">
-      <input type="text" id="noteTitle" placeholder="Title" required><br><br>
-      <textarea id="noteContent" placeholder="Content" required></textarea><br><br>
-      <input type="text" id="noteTags" placeholder="Tags (comma separated)"><br><br>
-      <button type="submit">Add Note</button>
-      <div id="noteError" class="error"></div>
-    </form>
-    <hr>
-    <h2>Your Notes</h2>
-    <div id="notesList"></div>
+    <div class="welcome-container">
+      <h1>Welcome to Notes App</h1>
+      <p>Your personal note-taking companion</p>
+      <div class="welcome-actions">
+        <a href="login.html" class="primary-btn">Login</a>
+        <a href="register.html" class="secondary-btn">Register</a>
+      </div>
+    </div>
   </div>
-  <script src="app.js"></script>
+  
+  <script>
+    // Check if user is already logged in
+    const token = localStorage.getItem('token');
+    if (token) {
+      // Verify token is still valid
+      fetch('http://localhost:4000/api/notes', {
+        headers: {
+          'Authorization': 'Bearer ' + token
+        }
+      })
+      .then(response => {
+        if (response.ok) {
+          window.location.href = 'notes.html';
+        } else {
+          localStorage.removeItem('token');
+          localStorage.removeItem('user');
+        }
+      })
+      .catch(() => {
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+      });
+    }
+  </script>
 </body>
 </html>

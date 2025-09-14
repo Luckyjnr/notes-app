@@ -13,8 +13,7 @@ const noteSchema = new mongoose.Schema({
   },
   tags: [{
     type: String,
-    trim: true,
-    index: true, // For tag filtering
+    trim: true
   }],
   owner: {
     type: mongoose.Schema.Types.ObjectId,

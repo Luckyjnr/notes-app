@@ -25,14 +25,6 @@ const userSchema = new mongoose.Schema({
     required: true,
     // Hashed password
   },
-  otp: {
-    type: String,
-    // One-time password for email verification
-  },
-  otpExpires: {
-    type: Date,
-    // OTP expiration timestamp
-  },
   isVerified: {
     type: Boolean,
     default: false,
